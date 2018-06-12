@@ -1,0 +1,88 @@
+<header>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img src="../../assets/img/logo.png" class=" rounded float-left " alt="logo ensisst">
+
+        <a class="navbar-brand" href="#">
+            <i class="fab fa-whatsapp"></i> 3136130894 /
+            <i class="fas fa-phone"></i> 559-62-11
+         </a>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+
+        <div class="collapse navbar-collapse text-center" id="navbarColor02">
+
+           <div class="container-fluid">
+
+                <div class="row  justify-content-center ">
+
+
+                    <div class="col col-12 col-lg-6  col-md-6 col-xs-12 col-sm-12">
+                        <ul class="navbar-nav mr-auto">
+
+
+                            <li class="nav-item active">
+                                <a class="nav-link" [routerLink]="['/inicio']">
+                                    <i class="fas fa-home"></i> Inicio
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="['/quienesSomos']">
+                                    <i class="fas fa-users"></i> Quiénes somos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="['/nuestrosServicios']">
+                                    <i class="fab fa-servicestack"></i> Nuestros servicios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="['/certificaciones']">
+                                    <i class="far fa-address-card"></i> Certificaciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" [routerLink]="['/contactenos']">
+                                    <i class="fas fa-address-book"></i> Contactenos</a>
+                            </li>
+
+
+                        </ul>
+
+
+                    </div>
+
+
+                    <div class="col-12 col-lg-5  col-md-12  col-xs-12 col-sm-12">
+
+                        <form [formGroup]="certificateForm" (ngSubmit)="submit()" class="form-inline" novalidate>
+                            <span class="align-baseline" style=" color:white">
+                                <i style=" color:white" class="far fa-address-card fa-lg"></i> Consultar certificado : </span>
+
+                            <input formControlName="cedula" class="form-control mr-sm-2 " type="text" placeholder="Ingrese Cedula">
+                            <button class="btn btn-secondary my-2 my-sm-0" type="submit" [disabled]="!certificateForm.valid" >Buscar</button>
+                        </form>
+
+
+                    </div>
+
+                    <div class="col col-1  col-lg-1 col-md-1  col-xs-12 col-sm-12 ">
+                        <a class="nav-link" [routerLink]="['/login']">
+                            <span class="align-baseline" style=" color:white">
+
+                                <i style=" color:white" class="fas fa-sign-out-alt"></i>Login Admin</span>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    </header>
+    

@@ -1,0 +1,12 @@
+img{
+    width: 100px;
+}
+
+footer {
+    color: white !important;
+	width: 100%;
+	position:fixed;
+        left:0px;
+        bottom:0px;
+    
+}

@@ -1,31 +1,123 @@
-<!-- 
+<ngx-spinner bdColor="rgba(104,192,57,0.8)" size="large" color="#000000" type="ball-clip-rotate-multiple">
 
-<form [formGroup]="certificateForm" (ngSubmit)="submit()" class="form-inline" novalidate>
-  <span class="align-baseline" style=" color:white">
-      <i style=" color:white" class="far fa-address-card fa-lg"></i> Consultar certificado : </span>
+</ngx-spinner>
+<br>
 
-  <input formControlName="cedula" class="form-control mr-sm-2 " type="text" placeholder="Ingrese Cedula">
-  <button class="btn btn-secondary my-2 my-sm-0" type="submit" [disabled]="!certificateForm.valid" >Buscar</button>
-</form>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col col-12 col-lg-7 col-md-7  col-xs-7 col-sm-7 text-center">
+
+      <form [formGroup]="certificateForm" (ngSubmit)="search()" class="form-inline" novalidate>
+        <h4>
+          <span class="align-baseline" style=" color:rgb(0, 0, 0)">
+            <i style=" color:rgb(0, 0, 0)" class="far fa-address-card fa-lg"></i> Ingrese Cedula :</span>
+          <br>
+
+        </h4>
+
+        <input formControlName="cedula" class="form-control form-control-lg" type="text" placeholder="Ingrese Cedula">
+
+        <button class="btn btn-info btn-lg" type="submit" [disabled]="!certificateForm.valid">Buscar</button>
+      </form>
+      <br>
+    </div>
+
+      <div *ngIf="certificates?.length > 0;else noCertificate"
+         class="animated flipInX   col col-12 col-lg-5 col-md-5  col-xs-5 col-sm-5 ">
+        <div class="card text-white bg-success mb-3">
+          <div class="card-header">
+            <h4>
+              <span class="badge badge-info">
+                <i class="fas fa-user"></i> Datos del usuario</span>
+            </h4>
+
+          </div>
+          <div class="card-body  text-left">
+
+
+            <h5 class="card-title">
+              <span class="badge badge-info">
+                <i class="far fa-id-badge"></i> Cedula: </span> {{userM.id}}</h5>
+
+
+            <h5 class="card-title">
+              <span class="badge badge-info">
+                <i class="far fa-address-book"></i> Nombres: </span> {{userM.firstName}}
+            </h5>
+
+            <h5 class="card-title">
+              <span class="badge badge-info">Apellidos: </span> {{userM.lastName}}</h5>
+
+
+          </div>
+        </div>
+
+      </div>
 
 
 
- -->
-
-<h1>sslkdhsldhs</h1>
-
+  </div>
+  <br>
 
 
+</div>
+
+<br>
+
+<div *ngIf="flag">
+
+ <div *ngIf="certificates?.length > 0;else noCertificate" class="table-responsive">
+
+    <table class=" animated lightSpeedIn  table  table-bordered table-hover">
+      <thead class="bg-success text-center">
+        <tr class="bg-primary" style=" color:rgb(255, 255, 255)">
+          <th scope="col">
+            <h5>
+              <span class="badge badge-info">
+                <i class="fas fa-barcode"></i> Codigo: </span>
+            </h5>
+          </th>
+          <th scope="col">
+            <h5>
+              <span class="badge badge-info">
+                <i class="fas fa-level-up-alt"></i> Nivel: </span>
+            </h5>
+          </th>
+          <th scope="col">
+            <h5>
+              <span class="badge badge-info">
+                <i class="fas fa-user-graduate"></i> Fecha de expedición MM/DD/AAAA </span>
+            </h5>
+          </th>
+          <th scope="col">
+            <h5>
+              <span class="badge badge-info">
+                <i class="far fa-calendar-check"></i> Validez </span>
+            </h5>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+
+        <tr *ngFor="let certificate of certificates" class="table-info">
+          <th scope="row">{{certificate.id}}</th>
+          <td>{{certificate.level}}</td>
+          <td>{{certificate.expeditionDate}}</td>
+          <td>{{certificate.flag}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
 
 
 
 
+</div>
 
 
-
-
-
-
-
-
-
+<ng-template #noCertificate>
+  <h1 style="color:red;">No tiene certificados</h1>
+</ng-template>

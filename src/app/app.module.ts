@@ -32,6 +32,8 @@ const APP_ROUTES: Routes =[
 import { FirebaseService } from './servicios/firebase.service';
 
 
+//Animaciones 
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 //Firebase
@@ -60,7 +62,9 @@ import { BuscarCertificadoComponent } from './componentes/buscar-certificado/bus
     AngularFireModule.initializeApp(environment.firebase, 'angularfs'),     
     RouterModule.forRoot(APP_ROUTES),  
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,    
+    NgxSpinnerModule
+    
     
        
   ],

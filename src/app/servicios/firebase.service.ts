@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Certificate } from '../models/Certificate';
+import { User } from '../models/User';
 
 import { Observable } from 'rxjs/Observable';
 @Injectable()
@@ -12,7 +13,9 @@ export class FirebaseService {
   certificates : Observable<Certificate[]>;
   collectionName = 'Users';
   subCollectionName = 'Certificados';
-
+  userDocument : AngularFirestoreDocument<User>;
+  user : Observable<User>;
+  
 
 
   constructor(public firebase: AngularFirestore) { }
@@ -41,6 +44,25 @@ export class FirebaseService {
     })
     return this.certificates;
   }
+
+
+
+
+ public getUser(cedula: string)
+ {
+   //Se busca el usuario en la base de datos
+   this.userDocument = this.firebase.collection(this.collectionName).doc(cedula);
+   //Se encarga de tomar el ID de los documentos en la base de datos.
+   this.user = this.userDocument.snapshotChanges().map(changes => {
+     const data = changes.payload.data() as User;
+     data.id = changes.payload.id;
+     return data;
+   })
+
+   return this.user;
+
+}
+
 
 
 }

@@ -52,6 +52,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { BuscarCertificadoComponent } from './componentes/buscar-certificado/buscar-certificado.component';
 import {AngularFireAuthModule} from 'angularfire2/auth';
+import { GestionUsuariosComponent } from './componentes/gestion-usuarios/gestion-usuarios.component';
 
 
 
@@ -67,7 +68,8 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
     NuestrosServiciosComponent,
     ContactenosComponent,
     BuscarCertificadoComponent,
-    AdminComponent
+    AdminComponent,
+    GestionUsuariosComponent
   ],
   imports: [
     BrowserModule, 

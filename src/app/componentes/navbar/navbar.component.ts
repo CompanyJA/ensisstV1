@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from "@angular/router/";
 import {AuthService } from '../../servicios/auth.service';
 
@@ -14,7 +13,6 @@ export class NavbarComponent implements OnInit {
   public isLogin: boolean;
   public nombreUsuario: string;
 
-  certificateForm: FormGroup;
   correctoLogin :boolean;
   
 
@@ -22,9 +20,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private fb: FormBuilder,
     private router: Router
-  ) { this.construirFormulario();}
+  ) { }
 
   ngOnInit() {
     this.authService.getAuth().subscribe( auth => {
@@ -34,23 +31,6 @@ export class NavbarComponent implements OnInit {
       } else {
         this.isLogin = false;
       }
-    });
-  }
-
- 
-  submit() {
-    console.log("cedula"+ this.certificateForm.get('cedula').value);
-    
-    
-    /* this.usuario = this.loginForm.get('usuario').value;
-    const clave = this.loginForm.get('clave').value;      
-    this.login(this.loginForm.getRawValue());*/
-  }
-
-  construirFormulario() {
-    this.correctoLogin=true;
-    this.certificateForm = this.fb.group({
-      cedula: ['', Validators.compose([Validators.required]) ],
     });
   }
 

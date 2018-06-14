@@ -60,20 +60,19 @@
                     </div>
 
 
-                    <div class="col-12 col-lg-4  col-md-12  col-xs-12 col-sm-12">
-
-                        <form [formGroup]="certificateForm" (ngSubmit)="submit()" class="form-inline" novalidate>
-                            <span class="align-baseline" style=" color:white">
-                                <i style=" color:white" class="far fa-address-card fa-lg"></i> Consultar certificado : </span>
-
-                            <input formControlName="cedula" class="form-control mr-sm-2 " type="text" placeholder="Ingrese Cedula">
-                            <button class="btn btn-secondary my-2 my-sm-0" type="submit" [disabled]="!certificateForm.valid" >Buscar</button>
-                        </form>
-
+                    <div class="col-12 col-lg-3  col-md-12  col-xs-12 col-sm-12">
+                        <a class="nav-link" [routerLink]="['/inicio']">
+                            <h3>
+                                    <span class="badge badge-pill badge-success" style=" color:white">
+                                            <i style=" color:white" class="far fa-address-card fa-lg">
+                                            </i> Consultar certificado</span>
+                            </h3>
+                            
+                            </a>
 
                     </div>
 
-                    <div *ngIf="!isLogin" class="col col-1  col-lg-1 col-md-1  col-xs-10 col-sm-10 ">
+                    <div *ngIf="!isLogin" class="col col-1  col-lg-2 col-md-1  col-xs-10 col-sm-10 ">
                         <a class="nav-link" [routerLink]="['/login']">
                             <span class="align-baseline" style=" color:white">
 

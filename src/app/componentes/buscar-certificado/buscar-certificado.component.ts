@@ -95,8 +95,7 @@ export class BuscarCertificadoComponent implements OnInit {
     this.searchUser(this.user.id);    
     this.searchCertificates(cedula);
     }
-    this.user.id= '';
-    
+    this.user.id= '';   
 
     this.certificates= null;
     

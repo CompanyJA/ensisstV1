@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <img src="../../assets/img/logo.png" class=" rounded float-left " alt="logo ensisst">
 
-        <a class="navbar-brand" href="#">
+        <a  *ngIf="!isLogin"  class="navbar-brand" href="#">
             <i class="fab fa-whatsapp"></i> 3136130894 /
             <i class="fas fa-phone"></i> 559-62-11
          </a>
@@ -32,7 +32,7 @@
 
 
 
-                            <li class="nav-item">
+                            <li *ngIf="!isLogin"  class="nav-item">
                                 <a class="nav-link" [routerLink]="['/quienesSomos']">
                                     <i class="fas fa-users"></i> Quiénes somos</a>
                             </li>
@@ -48,6 +48,10 @@
                                 <a class="nav-link" [routerLink]="['/contactenos']">
                                     <i class="fas fa-address-book"></i> Contactenos</a>
                             </li>
+                            <li *ngIf="isLogin" class="nav-item">
+                                <a class="nav-link" [routerLink]="['/admin']">
+                                    <i class="fas fa-wrench"></i> Gestionar Certificados</a>
+                            </li>
 
 
                         </ul>
@@ -56,7 +60,7 @@
                     </div>
 
 
-                    <div class="col-12 col-lg-5  col-md-12  col-xs-12 col-sm-12">
+                    <div class="col-12 col-lg-4  col-md-12  col-xs-12 col-sm-12">
 
                         <form [formGroup]="certificateForm" (ngSubmit)="submit()" class="form-inline" novalidate>
                             <span class="align-baseline" style=" color:white">
@@ -69,11 +73,19 @@
 
                     </div>
 
-                    <div class="col col-1  col-lg-1 col-md-1  col-xs-12 col-sm-12 ">
+                    <div *ngIf="!isLogin" class="col col-1  col-lg-1 col-md-1  col-xs-10 col-sm-10 ">
                         <a class="nav-link" [routerLink]="['/login']">
                             <span class="align-baseline" style=" color:white">
 
                                 <i style=" color:white" class="fas fa-sign-out-alt"></i>Login Admin</span>
+                        </a>
+
+                    </div>
+
+                    <div *ngIf="isLogin" class="col col-1  col-lg-1 col-md-1  col-xs-12 col-sm-12 " >
+                        <a class="nav-link" [routerLink]="['/inicio']" (click)="onClickLogout()" >
+                            <span class="align-baseline" style=" color:white">
+                                <i style=" color:white" class="fas fa-outdent"></i>Cerrar sesión</span>
                         </a>
 
                     </div>

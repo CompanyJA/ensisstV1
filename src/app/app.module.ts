@@ -17,6 +17,13 @@ import { QuienesSomosComponent } from './componentes/quienes-somos/quienes-somos
 import { LoginComponent } from './componentes/login/login.component';
 import { NuestrosServiciosComponent } from './componentes/nuestros-servicios/nuestros-servicios.component';
 import { ContactenosComponent } from './componentes/contactenos/contactenos.component';
+import { AdminComponent } from './componentes/admin/admin.component';
+
+//libreria de terceros
+
+// Guardian de rutas
+import {AuthGuard} from './guard/auth.guard';
+
 
 const APP_ROUTES: Routes =[
   {path: '', redirectTo : 'inicio', pathMatch : 'full'},
@@ -24,12 +31,15 @@ const APP_ROUTES: Routes =[
   {path: 'quienesSomos', component:QuienesSomosComponent},
   {path:'login', component:LoginComponent},
   {path: 'nuestrosServicios', component:NuestrosServiciosComponent},
-  {path: 'contactenos', component:ContactenosComponent}
+  {path: 'contactenos', component:ContactenosComponent},
+  {path: 'admin', component:AdminComponent, canActivate:[AuthGuard]},
+  {path: '**', component:InicioComponent}
 
 ]
 
 // Servicios
 import { FirebaseService } from './servicios/firebase.service';
+import { AuthService } from './servicios/auth.service';
 
 
 //Animaciones 
@@ -41,6 +51,9 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { BuscarCertificadoComponent } from './componentes/buscar-certificado/buscar-certificado.component';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+
+
 
 
 @NgModule({
@@ -53,22 +66,23 @@ import { BuscarCertificadoComponent } from './componentes/buscar-certificado/bus
     LoginComponent,
     NuestrosServiciosComponent,
     ContactenosComponent,
-    BuscarCertificadoComponent
+    BuscarCertificadoComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule, 
     AngularFireModule,
     AngularFirestoreModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase, 'angularfs'),     
     RouterModule.forRoot(APP_ROUTES),  
     ReactiveFormsModule,
     HttpModule,    
     NgxSpinnerModule
     
-    
        
   ],
-  providers: [FirebaseService],
+  providers: [FirebaseService, AuthService,AuthGuard],
   bootstrap: [AppComponent,NavbarComponent, FooterComponent]
 })
 export class AppModule { }

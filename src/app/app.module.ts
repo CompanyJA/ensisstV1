@@ -5,6 +5,10 @@ import {Routes, RouterModule, CanActivate } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import {ReactiveFormsModule} from '@angular/forms';
 
+
+
+
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { FooterComponent } from './componentes/footer/footer.component';
@@ -24,8 +28,17 @@ const APP_ROUTES: Routes =[
 
 ]
 
+// Servicios
+import { FirebaseService } from './servicios/firebase.service';
 
 
+
+
+//Firebase
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { BuscarCertificadoComponent } from './componentes/buscar-certificado/buscar-certificado.component';
 
 
 @NgModule({
@@ -37,16 +50,21 @@ const APP_ROUTES: Routes =[
     QuienesSomosComponent,
     LoginComponent,
     NuestrosServiciosComponent,
-    ContactenosComponent
+    ContactenosComponent,
+    BuscarCertificadoComponent
   ],
   imports: [
-    RouterModule.forRoot(APP_ROUTES),
-    BrowserModule,   
+    BrowserModule, 
+    AngularFireModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase, 'angularfs'),     
+    RouterModule.forRoot(APP_ROUTES),  
     ReactiveFormsModule,
     HttpModule
+    
        
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent,FooterComponent]
 })
 export class AppModule { }

@@ -69,6 +69,6 @@ import { BuscarCertificadoComponent } from './componentes/buscar-certificado/bus
        
   ],
   providers: [FirebaseService],
-  bootstrap: [AppComponent,FooterComponent]
+  bootstrap: [AppComponent,NavbarComponent, FooterComponent]
 })
 export class AppModule { }

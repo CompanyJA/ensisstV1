@@ -4,7 +4,11 @@ import { AuthService } from '../../servicios/auth.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from "@angular/router/";
 
+// animacion de carga
+import { NgxSpinnerService } from 'ngx-spinner';
 
+//Alertas
+import {AlertService} from 'ngx-alerts';
 
 @Component({
   selector: 'app-login',
@@ -12,23 +16,19 @@ import { ActivatedRoute, Router } from "@angular/router/";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   loginForm: FormGroup;
   correctoLogin :boolean;
   public  usuario;
   constructor(
     public authService: AuthService,
     private fb: FormBuilder,
-    private router: Router
-
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private alertService: AlertService
 
   ) { this.construirFormulario(); }
 
   ngOnInit() {
-  
-
-
-
   }
 
 
@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
 
 
   submit() {
+    this.spinner.show();
     this.usuario = this.loginForm.get('usuario').value;
     const clave = this.loginForm.get('clave').value;      
     this.login(this.loginForm.getRawValue());
@@ -50,8 +51,11 @@ export class LoginComponent implements OnInit {
   public login(credenciales:any){
     this.authService.loginEmail(credenciales.usuario,credenciales.clave)
     .then( (res) => {
+      this.spinner.hide();
       this.router.navigate(['/admin']);
     }).catch((err) => {
+      this.spinner.hide();
+      this.alertService.danger('Credenciales incorrectas');
       this.usuario=null;
       this.router.navigate(['/login']);
     });

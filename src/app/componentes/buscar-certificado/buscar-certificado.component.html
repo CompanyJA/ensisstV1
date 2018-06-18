@@ -22,7 +22,7 @@
       <br>
     </div>
 
-      <div *ngIf="certificates?.length > 0;else noCertificate"
+      <div *ngIf="certificates?.length > 0;else noUser"
          class="animated flipInX   col col-12 col-lg-5 col-md-5  col-xs-5 col-sm-5 ">
         <div class="card text-white bg-success mb-3">
           <div class="card-header">
@@ -119,5 +119,8 @@
 
 
 <ng-template #noCertificate>
-  <h1 style="color:red;">No tiene certificados</h1>
+  <h1 style="color:red;">No tiene certificados Ó el usuario no está registrado.</h1>
+</ng-template>
+
+<ng-template #noUser>
 </ng-template>

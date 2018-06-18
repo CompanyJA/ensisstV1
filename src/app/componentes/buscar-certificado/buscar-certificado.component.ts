@@ -32,12 +32,6 @@ export class BuscarCertificadoComponent implements OnInit {
   ) { this.construirFormulario(); }
 
   ngOnInit() {
-
- 
-  
-
-
-
   }
 
   public searchCertificates(cedula:string)

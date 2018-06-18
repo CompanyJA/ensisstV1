@@ -20,6 +20,9 @@ import { ContactenosComponent } from './componentes/contactenos/contactenos.comp
 import { AdminComponent } from './componentes/admin/admin.component';
 
 //libreria de terceros
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AlertModule } from 'ngx-alerts';
+
 
 // Guardian de rutas
 import {AuthGuard} from './guard/auth.guard';
@@ -72,17 +75,18 @@ import { GestionUsuariosComponent } from './componentes/gestion-usuarios/gestion
     GestionUsuariosComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule, 
+    AlertModule.forRoot({maxMessages: 3, timeout: 3000}),
     AngularFireModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase, 'angularfs'),     
     RouterModule.forRoot(APP_ROUTES),  
     ReactiveFormsModule,
-    HttpModule,    
+    HttpModule,
     NgxSpinnerModule
     
-       
   ],
   providers: [FirebaseService, AuthService,AuthGuard],
   bootstrap: [AppComponent,NavbarComponent, FooterComponent]

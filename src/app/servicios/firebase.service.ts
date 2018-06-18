@@ -3,6 +3,8 @@ import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument } 
 import { Certificate } from '../models/Certificate';
 import { User } from '../models/User';
 
+import {AlertService} from 'ngx-alerts';
+
 import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class FirebaseService {
@@ -18,7 +20,9 @@ export class FirebaseService {
   
 
 
-  constructor(public firebase: AngularFirestore) { }
+  constructor(
+    public firebase: AngularFirestore,
+    private alertService: AlertService) { }
 
 
   public getCertificates(cedula: string)
@@ -60,15 +64,28 @@ export class FirebaseService {
    })
 
    return this.user;
-
 }
 
+public addUser(user: User)
+{
+  var data = {
+    firstName: user.firstName,
+    lastName: user.lastName,
+  }
 
-
+  this.firebase.collection(this.collectionName).doc(user.id).set(data).then( (data) =>
+  {
+    this.alertService.success('Usuario registrado con éxito.');
+  }).catch( (error) =>{
+    this.alertService.danger('No se puede guardar el usuario ' + error);
+    return false;
+  });
+}
 }
 
-
-
-
-
-
+/**
+    this.alertService.info('this is an info alert');
+        this.alertService.danger('this is a danger alert');
+        this.alertService.success('this is a success alert');
+        this.alertService.warning('this is a warning alert');
+         */

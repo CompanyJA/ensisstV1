@@ -4,6 +4,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute, Router } from "@angular/router/";
 import { FirebaseService } from './../../servicios/firebase.service';
 
+//Alertas
+import { User } from '../../models/User';
 @Component({
   selector: 'app-gestion-usuarios',
   templateUrl: './gestion-usuarios.component.html',
@@ -11,7 +13,11 @@ import { FirebaseService } from './../../servicios/firebase.service';
 })
 export class GestionUsuariosComponent implements OnInit {
   userAddForm: FormGroup;
-
+  user: User = {
+    id: '',
+    firstName: '',
+    lastName: ''
+  }
   constructor(   
     private firebaseService:FirebaseService,
     private fb: FormBuilder,
@@ -34,7 +40,15 @@ export class GestionUsuariosComponent implements OnInit {
 
   public addUser(){
     let cedula = this.userAddForm.get('cedula').value;
-
-
+    let nombres = this.userAddForm.get('nombres').value;
+    let apellidos = this.userAddForm.get('apellidos').value;
+    this.user.firstName= nombres;
+    this.user.lastName = apellidos;
+    this.user.id = cedula;
+    this.firebaseService.addUser(this.user);
+    this.user.id = '';
+    this.user.firstName = '';
+    this.user.lastName = '';
   }
 }
+

@@ -76,8 +76,6 @@ export class BuscarCertificadoComponent implements OnInit {
     });
   }
 
-
-
   public search(){
     
     this.spinner.show();
@@ -91,12 +89,8 @@ export class BuscarCertificadoComponent implements OnInit {
     }
     this.user.id= '';   
 
-    this.certificates= null;
-    
-    
-
+    this.certificates= null; 
   }
-
 
   construirFormulario() {
     this.correctoLogin=true;

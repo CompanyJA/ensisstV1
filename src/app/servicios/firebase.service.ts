@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore,AngularFirestoreCollection,AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Certificate } from '../models/Certificate';
 import { User } from '../models/User';
-
+import { map } from 'rxjs/operators';
 import {AlertService} from 'ngx-alerts';
 
 import { Observable } from 'rxjs/Observable';
@@ -34,7 +34,16 @@ export class FirebaseService {
     */
     this.certificateCollection = this.firebase.collection(this.collectionName).doc(cedula).collection(this.subCollectionName);
 
-    //Se encarga de tomar el ID de los documentos en la base de datos.
+    // Se encarga de tomar el ID de los documentos en la base de datos.
+
+    this.certificates = this.certificateCollection.snapshotChanges().pipe(map(changes => {
+      return changes.map(document => {
+        const data = document.payload.doc.data() as Certificate;
+        data.id = document.payload.doc.id;
+        return data;
+      });
+    }));
+    /*
     this.certificates = this.certificateCollection.snapshotChanges().map(changes =>
     {
       return changes.map(a=>
@@ -46,22 +55,28 @@ export class FirebaseService {
         return data;
       })
     })
-    return this.certificates;
+    return this.certificates;*/
   }
 
 
 
 
- public getUser(cedula: string)
- {
-   //Se busca el usuario en la base de datos
+ public getUser(cedula: string) {
+   // Se busca el usuario en la base de datos
    this.userDocument = this.firebase.collection(this.collectionName).doc(cedula);
-   //Se encarga de tomar el ID de los documentos en la base de datos.
+   // Se encarga de tomar el ID de los documentos en la base de datos.
+
+   this.user = this.userDocument.snapshotChanges().pipe(map(changes => {
+     const data = changes.payload.data() as User;
+     data.id = changes.payload.id;
+     return data;
+   }));
+   /*
    this.user = this.userDocument.snapshotChanges().map(changes => {
      const data = changes.payload.data() as User;
      data.id = changes.payload.id;
      return data;
-   })
+   })*/
 
    return this.user;
 }

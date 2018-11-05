@@ -21,7 +21,6 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-    //"@angular/fire": "^5.1.0",
     "angularfire2": "^5.0.0-rc.5-next",
     "bootstrap": "^4.1.1",
     "bootswatch": "^4.1.1",

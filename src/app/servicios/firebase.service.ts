@@ -54,8 +54,8 @@ export class FirebaseService {
         data.id = a.payload.doc.id;
         return data;
       })
-    })
-    return this.certificates;*/
+    })*/
+    return this.certificates;
   }
 
 

@@ -39,7 +39,7 @@ export class GestionUsuariosComponent implements OnInit {
   }
 
   public addUser(){
-    let cedula = this.userAddForm.get('cedula').value;
+    /*let cedula = this.userAddForm.get('cedula').value;
     let nombres = this.userAddForm.get('nombres').value;
     let apellidos = this.userAddForm.get('apellidos').value;
     this.user.firstName= nombres;
@@ -48,7 +48,7 @@ export class GestionUsuariosComponent implements OnInit {
     this.firebaseService.addUser(this.user);
     this.user.id = '';
     this.user.firstName = '';
-    this.user.lastName = '';
+    this.user.lastName = '';*/
   }
 }
 

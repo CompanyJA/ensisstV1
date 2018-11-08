@@ -1,10 +1,8 @@
 
-export interface Certificate
-{
-    id: string;
-    courseName:string;
-    level:string;
-    expeditionDate:string;
-    cedula:string;
-    flag?: string;
+export interface Certificate {
+    Consecutivo: string;
+    Nombres: string;
+    Cedula: string;
+    NivelCurso: string;
+    Fecha: string;
 }

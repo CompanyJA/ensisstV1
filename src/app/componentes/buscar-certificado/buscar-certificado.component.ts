@@ -16,7 +16,7 @@ const DIVIDE = 10000000;
   styleUrls: ['./buscar-certificado.component.css']
 })
 export class BuscarCertificadoComponent implements OnInit {
-  certificates: Certificate[];
+  public certificates: Array<Certificate> = [];
   flag = false;
   certificateForm: FormGroup;
   correctoLogin: boolean;
@@ -35,7 +35,8 @@ export class BuscarCertificadoComponent implements OnInit {
   public searchCertificates(cedula: string) {
     this.flag = true;
     this.searchService.getCertificatesById(cedula).subscribe(certificates => {
-      certificates.forEach((certificate, index) => {
+      this.certificates = [];
+      certificates.forEach(certificate => {
         if (certificate.NivelCurso.toLocaleLowerCase() === 'coordinador') {
           this.certificates.push(certificate);
         } else {
@@ -46,11 +47,11 @@ export class BuscarCertificadoComponent implements OnInit {
           const result = actualDate - cerDate;
 
           if (result < 3154) {
-            // this.certificates.push(certificate);
+            this.certificates.push(certificate);
           }
         }
       });
-      this.certificates = certificates;
+      //this.certificates = certificates;
       // detener spinner
       this.spinner.hide();
     });

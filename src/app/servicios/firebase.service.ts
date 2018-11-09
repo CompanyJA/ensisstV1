@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Certificate } from '../models/Certificate';
-import {AlertService} from 'ngx-alerts';
+import { AlertService } from 'ngx-alerts';
 
 import { Observable } from 'rxjs/Observable';
 @Injectable()
@@ -9,6 +9,7 @@ export class FirebaseService {
   certificateCollection: AngularFirestoreCollection<Certificate>;
   certificatesObservable: Observable<Certificate[]>;
   collectionName = 'Certificates';
+  firstTime = true;
 
   constructor(
     private firebase: AngularFirestore,
@@ -43,53 +44,58 @@ export class FirebaseService {
   }
 
   public addCertificate(certificate: Certificate) {
+    this.firstTime = true;
     this.certificatesObservable = this.getCertificatesByConsecutivo(certificate.Consecutivo);
 
     this.certificatesObservable.subscribe(certificates => {
       if (certificates.length > 0) {
-        this.alertService.danger('No se puede insertar el certificado de consecutivo ' + certificate.Consecutivo);
-       } else {
-         this.certificateCollection = this.firebase.collection(this.collectionName);
-         this.certificateCollection.add(certificate);
-       }
+        if (this.firstTime) {
+          this.alertService.danger('No se puede insertar el certificado de consecutivo ' + certificate.Consecutivo);
+        }
+      } else {
+        this.certificateCollection = this.firebase.collection(this.collectionName);
+        this.alertService.success('El certificado fue ingresado correctamente');
+        this.firstTime = false;
+        this.certificateCollection.add(certificate);
+      }
     });
   }
-/*
- public getUser(cedula: string) {
-   // Se busca el usuario en la base de datos
-   this.userDocument = this.firebase.collection(this.collectionName).doc(cedula);
-   // Se encarga de tomar el ID de los documentos en la base de datos.
-
-   this.user = this.userDocument.snapshotChanges().pipe(map(changes => {
-     const data = changes.payload.data() as User;
-     data.id = changes.payload.id;
-     return data;
-   }));
-   /*
-   this.user = this.userDocument.snapshotChanges().map(changes => {
-     const data = changes.payload.data() as User;
-     data.id = changes.payload.id;
-     return data;
-   })
-
-   return this.user;
-}*/
-/*
-public addUser(user: User)
-{
-  var data = {
-    firstName: user.firstName,
-    lastName: user.lastName,
-  }
-
-  this.firebase.collection(this.collectionName).doc(user.id).set(data).then( (data) =>
+  /*
+   public getUser(cedula: string) {
+     // Se busca el usuario en la base de datos
+     this.userDocument = this.firebase.collection(this.collectionName).doc(cedula);
+     // Se encarga de tomar el ID de los documentos en la base de datos.
+  
+     this.user = this.userDocument.snapshotChanges().pipe(map(changes => {
+       const data = changes.payload.data() as User;
+       data.id = changes.payload.id;
+       return data;
+     }));
+     /*
+     this.user = this.userDocument.snapshotChanges().map(changes => {
+       const data = changes.payload.data() as User;
+       data.id = changes.payload.id;
+       return data;
+     })
+  
+     return this.user;
+  }*/
+  /*
+  public addUser(user: User)
   {
-    this.alertService.success('Usuario registrado con éxito.');
-  }).catch( (error) =>{
-    this.alertService.danger('No se puede guardar el usuario ' + error);
-    return false;
-  });
-}*/
+    var data = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+    }
+  
+    this.firebase.collection(this.collectionName).doc(user.id).set(data).then( (data) =>
+    {
+      this.alertService.success('Usuario registrado con éxito.');
+    }).catch( (error) =>{
+      this.alertService.danger('No se puede guardar el usuario ' + error);
+      return false;
+    });
+  }*/
 }
 
 /**

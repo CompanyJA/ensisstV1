@@ -2,7 +2,7 @@ import { FirebaseService } from './../../servicios/firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { Certificate } from '../../models/Certificate';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from "@angular/router/";
+import { ActivatedRoute, Router } from '@angular/router/';
 import { User } from '../../models/User';
 
 // animacion de carga
@@ -58,7 +58,7 @@ export class BuscarCertificadoComponent implements OnInit {
       } else {
         this.messageBool = true;
       }
-      //this.certificates = certificates;
+      // this.certificates = certificates;
       // detener spinner
       this.spinner.hide();
     });

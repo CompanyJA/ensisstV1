@@ -31,7 +31,7 @@
 
 <div *ngIf="flag">
 
-  <div *ngIf="certificates?.length > 0;else noCertificate" class="table-responsive">
+  <div *ngIf="certificates?.length > 0" class="table-responsive">
 
     <table class=" animated lightSpeedIn  table  table-bordered table-hover">
       <thead class="bg-success text-center">
@@ -82,9 +82,9 @@
 </div>
 
 
-<ng-template #noCertificate>
-  <h1 style="color:red;">No tiene certificados Ó el usuario no está registrado.</h1>
-</ng-template>
+<div *ngIf="messageBool">
+  <h1 style="color:red;">No se registran certificados a la cedula ingresada</h1>
+</div>
 
 <ng-template #noUser>
 </ng-template>

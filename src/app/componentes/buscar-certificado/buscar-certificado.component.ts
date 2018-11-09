@@ -19,6 +19,7 @@ export class BuscarCertificadoComponent implements OnInit {
   public certificates: Array<Certificate> = [];
   flag = false;
   certificateForm: FormGroup;
+  messageBool = false;
   correctoLogin: boolean;
   user: User = { id: '', firstName: '', lastName: '' };
 
@@ -51,6 +52,12 @@ export class BuscarCertificadoComponent implements OnInit {
           }
         }
       });
+
+      if (this.certificates.length > 0) {
+        this.messageBool = false;
+      } else {
+        this.messageBool = true;
+      }
       //this.certificates = certificates;
       // detener spinner
       this.spinner.hide();

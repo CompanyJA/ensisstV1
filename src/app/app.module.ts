@@ -58,6 +58,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import { CertificatesFromExcelComponent } from './componentes/certificates-from-excel/certificates-from-excel.component';
 
 //Excel 
+import { HotTableModule } from '@handsontable/angular';
 
 
 
@@ -78,6 +79,7 @@ import { CertificatesFromExcelComponent } from './componentes/certificates-from-
   imports: [
     BrowserAnimationsModule,
     BrowserModule, 
+    HotTableModule.forRoot(),
     AlertModule.forRoot({maxMessages: 3, timeout: 3000}),
     AngularFireModule,
     AngularFirestoreModule,

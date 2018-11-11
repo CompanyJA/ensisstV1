@@ -1,0 +1,14 @@
+<h1 >Agregar Certificados</h1>
+<input class="btn btn-primary" type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+<button type="button" class="btn btn-info" (click)="Upload()" >Upload</button>
+
+
+
+<div  *ngIf="isLoaded">
+    <h1>Datos Cargados</h1>
+    <hot-table [settings]="settingsObj"[data]="dataset"></hot-table>
+
+</div>
+
+<ngx-spinner bdColor="rgba(104,192,57,0.8)" size="large" color="#000000" type="ball-clip-rotate-multiple">
+</ngx-spinner>

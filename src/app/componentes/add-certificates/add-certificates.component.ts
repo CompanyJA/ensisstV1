@@ -3,15 +3,15 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ActivatedRoute, Router } from '@angular/router/';
 import { FirebaseService } from './../../servicios/firebase.service';
-
-//Alertas
 import { Certificate } from '../../models/Certificate';
+
 @Component({
-  selector: 'app-gestion-usuarios',
-  templateUrl: './gestion-usuarios.component.html',
-  styleUrls: ['./gestion-usuarios.component.css']
+  selector: 'app-add-certificates',
+  templateUrl: './add-certificates.component.html',
+  styleUrls: ['./add-certificates.component.css']
 })
-export class GestionUsuariosComponent implements OnInit {
+export class AddCertificatesComponent implements OnInit {
+
   userAddForm: FormGroup;
   certificate: Certificate = {
     Consecutivo: '',
@@ -20,11 +20,13 @@ export class GestionUsuariosComponent implements OnInit {
     NivelCurso: '',
     Fecha: '',
   };
+
   constructor(
     private firebaseService: FirebaseService,
     private fb: FormBuilder,
     private router: Router,
-    private spinner: NgxSpinnerService ) { this.construirFormulario(); }
+    private spinner: NgxSpinnerService
+  ) { this.construirFormulario(); }
 
   ngOnInit() {
   }
@@ -39,7 +41,7 @@ export class GestionUsuariosComponent implements OnInit {
     });
   }
 
-  public addUser() {
+  addCertificate() {
     const cedula = this.userAddForm.get('Cedula').value;
     const nombres = this.userAddForm.get('Nombres').value;
     const consecutivo = this.userAddForm.get('Consecutivo').value;
@@ -63,4 +65,3 @@ export class GestionUsuariosComponent implements OnInit {
     this.certificate.NivelCurso = '';*/
   }
 }
-

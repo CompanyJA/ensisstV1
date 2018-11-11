@@ -6,9 +6,6 @@ import { HttpModule } from '@angular/http';
 import {ReactiveFormsModule} from '@angular/forms';
 
 
-
-
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { FooterComponent } from './componentes/footer/footer.component';
@@ -55,8 +52,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { BuscarCertificadoComponent } from './componentes/buscar-certificado/buscar-certificado.component';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import { GestionUsuariosComponent } from './componentes/gestion-usuarios/gestion-usuarios.component';
+import { CertificatesFromExcelComponent } from './componentes/certificates-from-excel/certificates-from-excel.component';
 
+//Excel 
+import { HotTableModule } from '@handsontable/angular';
+import { AddCertificatesComponent } from './componentes/add-certificates/add-certificates.component';
 
 
 
@@ -72,11 +72,13 @@ import { GestionUsuariosComponent } from './componentes/gestion-usuarios/gestion
     ContactenosComponent,
     BuscarCertificadoComponent,
     AdminComponent,
-    GestionUsuariosComponent
+    CertificatesFromExcelComponent,
+    AddCertificatesComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule, 
+    HotTableModule.forRoot(),
     AlertModule.forRoot({maxMessages: 3, timeout: 3000}),
     AngularFireModule,
     AngularFirestoreModule,

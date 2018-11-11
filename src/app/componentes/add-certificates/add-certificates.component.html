@@ -1,0 +1,68 @@
+<div class="animated flipInX ">
+  <div class="card text-white bg-success mb-3">
+    <div class="card-header text-center">
+      <h4>
+        <span class="badge badge-info">
+          <i class="fas fa-user "></i>Ingresar datos del certificado</span>
+      </h4>
+
+    </div>
+    <div class="card-body  text-left">
+
+      <form [formGroup]="userAddForm" (ngSubmit)="addCertificate()" class="form-inline" novalidate>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+
+              <h5 class="card-title">
+                <span class="badge badge-info">
+                  <i class="fas fa-barcode"></i> Consecutivo: </span>
+                <input formControlName="Consecutivo" class="form-control form-control-lg" type="text" placeholder="A001">
+              </h5>
+
+
+
+              <h5 class="card-title">
+                <span class="badge badge-info">
+                  <i class="fas fa-user"></i> Nombres: </span>
+                <input formControlName="Nombres" class="form-control form-control-lg" type="text" placeholder="Pepito Perez">
+
+              </h5>
+
+              <h5 class="card-title">
+                <span class="badge badge-info">
+                  <i class="fas fa-id-card"></i> Cedula: </span>
+                <input formControlName="Cedula" class="form-control form-control-lg" type="number" placeholder="123456789">
+              </h5>
+
+              <h5 class="card-title">
+                <span class="badge badge-info">
+                  <i class="fas fa-level-up-alt"></i> Nivel Curso: </span>
+                <input formControlName="NivelCurso" class="form-control form-control-lg" type="text" placeholder="Coordinador">
+              </h5>
+
+              <h5 class="card-title">
+                <span class="badge badge-info">
+                  <i class="fas fa-user-graduate"></i> Fecha: </span>
+                <input formControlName="Fecha" class="form-control form-control-lg" type="date" placeholder="dd/mm/aaaa">
+              </h5>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col d-flex justify-content-center">
+              <h5 class="card-title">
+                <button class="btn btn-info btn-lg " type="submit" [disabled]="!userAddForm.valid">Agregar</button>
+
+              </h5>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>

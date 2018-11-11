@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GestionUsuariosComponent } from './gestion-usuarios.component';
+import { AddCertificatesComponent } from './add-certificates.component';
 
-describe('GestionUsuariosComponent', () => {
-  let component: GestionUsuariosComponent;
-  let fixture: ComponentFixture<GestionUsuariosComponent>;
+describe('AddCertificatesComponent', () => {
+  let component: AddCertificatesComponent;
+  let fixture: ComponentFixture<AddCertificatesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GestionUsuariosComponent ]
+      declarations: [ AddCertificatesComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GestionUsuariosComponent);
+    fixture = TestBed.createComponent(AddCertificatesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

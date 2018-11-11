@@ -56,6 +56,7 @@ import { CertificatesFromExcelComponent } from './componentes/certificates-from-
 
 //Excel 
 import { HotTableModule } from '@handsontable/angular';
+import { AddCertificatesComponent } from './componentes/add-certificates/add-certificates.component';
 
 
 
@@ -71,7 +72,8 @@ import { HotTableModule } from '@handsontable/angular';
     ContactenosComponent,
     BuscarCertificadoComponent,
     AdminComponent,
-    CertificatesFromExcelComponent
+    CertificatesFromExcelComponent,
+    AddCertificatesComponent
   ],
   imports: [
     BrowserAnimationsModule,

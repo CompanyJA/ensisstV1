@@ -50,7 +50,8 @@ export class FirebaseService {
     this.certificatesObservable.subscribe(certificates => {
       if (certificates.length > 0) {
         if (this.firstTime) {
-          this.alertService.danger('No se puede insertar el certificado de consecutivo ' + certificate.Consecutivo);
+          this.alertService.danger('No se puede insertar el certificado de consecutivo ' + certificate.Consecutivo + 
+          ' porque ya existe en la base de datos');
         }
       } else {
         this.certificateCollection = this.firebase.collection(this.collectionName);
@@ -60,47 +61,4 @@ export class FirebaseService {
       }
     });
   }
-  /*
-   public getUser(cedula: string) {
-     // Se busca el usuario en la base de datos
-     this.userDocument = this.firebase.collection(this.collectionName).doc(cedula);
-     // Se encarga de tomar el ID de los documentos en la base de datos.
-  
-     this.user = this.userDocument.snapshotChanges().pipe(map(changes => {
-       const data = changes.payload.data() as User;
-       data.id = changes.payload.id;
-       return data;
-     }));
-     /*
-     this.user = this.userDocument.snapshotChanges().map(changes => {
-       const data = changes.payload.data() as User;
-       data.id = changes.payload.id;
-       return data;
-     })
-  
-     return this.user;
-  }*/
-  /*
-  public addUser(user: User)
-  {
-    var data = {
-      firstName: user.firstName,
-      lastName: user.lastName,
-    }
-  
-    this.firebase.collection(this.collectionName).doc(user.id).set(data).then( (data) =>
-    {
-      this.alertService.success('Usuario registrado con éxito.');
-    }).catch( (error) =>{
-      this.alertService.danger('No se puede guardar el usuario ' + error);
-      return false;
-    });
-  }*/
 }
-
-/**
-    this.alertService.info('this is an info alert');
-        this.alertService.danger('this is a danger alert');
-        this.alertService.success('this is a success alert');
-        this.alertService.warning('this is a warning alert');
-         */

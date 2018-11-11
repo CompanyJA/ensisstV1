@@ -21,41 +21,6 @@
       </form>
       <br>
     </div>
-
-      <div *ngIf="certificates?.length > 0;else noUser"
-         class="animated flipInX   col col-12 col-lg-5 col-md-5  col-xs-5 col-sm-5 ">
-        <div class="card text-white bg-success mb-3">
-          <div class="card-header">
-            <h4>
-              <span class="badge badge-info">
-                <i class="fas fa-user"></i> Datos del usuario</span>
-            </h4>
-
-          </div>
-          <div class="card-body  text-left">
-
-
-            <h5 class="card-title">
-              <span class="badge badge-info">
-                <i class="far fa-id-badge"></i> Cedula: </span> {{userM.id}}</h5>
-
-
-            <h5 class="card-title">
-              <span class="badge badge-info">
-                <i class="far fa-address-book"></i> Nombres: </span> {{userM.firstName}}
-            </h5>
-
-            <h5 class="card-title">
-              <span class="badge badge-info">Apellidos: </span> {{userM.lastName}}</h5>
-
-
-          </div>
-        </div>
-
-      </div>
-
-
-
   </div>
   <br>
 
@@ -66,7 +31,7 @@
 
 <div *ngIf="flag">
 
- <div *ngIf="certificates?.length > 0;else noCertificate" class="table-responsive">
+  <div *ngIf="certificates?.length > 0" class="table-responsive">
 
     <table class=" animated lightSpeedIn  table  table-bordered table-hover">
       <thead class="bg-success text-center">
@@ -74,53 +39,49 @@
           <th scope="col">
             <h5>
               <span class="badge badge-info">
-                <i class="fas fa-barcode"></i> Codigo: </span>
+                <i class="fas fa-barcode"></i> Consecutivo</span>
             </h5>
           </th>
           <th scope="col">
             <h5>
               <span class="badge badge-info">
-                <i class="fas fa-level-up-alt"></i> Nivel: </span>
+                <i class="fas fa-user"></i> Nombres</span>
             </h5>
           </th>
           <th scope="col">
             <h5>
               <span class="badge badge-info">
-                <i class="fas fa-user-graduate"></i> Fecha de expedición MM/DD/AAAA </span>
+                <i class="fas fa-id-card"></i> Cedula</span>
             </h5>
           </th>
           <th scope="col">
             <h5>
               <span class="badge badge-info">
-                <i class="far fa-calendar-check"></i> Validez </span>
+                <i class="fas fa-level-up-alt"></i> Nivel Curso</span>
+            </h5>
+          </th>
+          <th scope="col">
+            <h5>
+              <span class="badge badge-info">
+                <i class="fas fa-user-graduate"></i> Fecha de expedición DD/MM/AAAA </span>
             </h5>
           </th>
         </tr>
       </thead>
       <tbody>
-
-
-
         <tr *ngFor="let certificate of certificates" class="table-info">
-          <th scope="row">{{certificate.id}}</th>
-          <td>{{certificate.level}}</td>
-          <td>{{certificate.expeditionDate}}</td>
-          <td>{{certificate.flag}}</td>
+          <td>{{certificate.Consecutivo}}</td>
+          <td>{{certificate.Nombres}}</td>
+          <td>{{certificate.Cedula}}</td>
+          <td>{{certificate.NivelCurso}}</td>
+          <td>{{certificate.Fecha}}</td>
         </tr>
-
       </tbody>
     </table>
   </div>
-
-
-
-
 </div>
 
 
-<ng-template #noCertificate>
-  <h1 style="color:red;">No tiene certificados Ó el usuario no está registrado.</h1>
-</ng-template>
-
-<ng-template #noUser>
-</ng-template>
+<div *ngIf="messageBool">
+  <h1 style="color:red;">No se registran certificados a la cedula ingresada</h1>
+</div>

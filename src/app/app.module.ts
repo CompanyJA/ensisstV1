@@ -6,9 +6,6 @@ import { HttpModule } from '@angular/http';
 import {ReactiveFormsModule} from '@angular/forms';
 
 
-
-
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { FooterComponent } from './componentes/footer/footer.component';

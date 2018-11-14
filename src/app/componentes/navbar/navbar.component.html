@@ -1,11 +1,12 @@
 <header>
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <img src="../../assets/img/logo.png" class=" rounded float-left " alt="logo ensisst">
-
-        <a  *ngIf="!isLogin"  class="navbar-brand" href="#">
-            <i class="fab fa-whatsapp"></i> 3136130894 /
-            <i class="fas fa-phone"></i> 559-62-11
+    
+    
+        <a  class="navbar-brand" [routerLink]="['/quienesSomos']" >
+            <img  src="../../assets/img/logo.png" class=" rounded float-left " alt="logo ensisst">           
+             <i class="fab fa-whatsapp"></i> 3136130894 
+            <!-- <i class="fas fa-phone"></i> 559-62-11  -->
          </a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
                 <span class="navbar-toggler-icon"></span>
@@ -22,7 +23,7 @@
                     <div class="col col-12 col-lg-6  col-md-6 col-xs-12 col-sm-12">
                         <ul class="navbar-nav mr-auto">
 
-
+                            <!-- 
                             <li class="nav-item active">
                                 <a class="nav-link" [routerLink]="['/inicio']">
                                     <i class="fas fa-home"></i> Inicio
@@ -31,19 +32,30 @@
                             </li>
 
 
+                             -->
+
+                            
+
 
                             <li *ngIf="!isLogin"  class="nav-item">
                                 <a class="nav-link" [routerLink]="['/quienesSomos']">
                                     <i class="fas fa-users"></i> Quiénes somos</a>
+                                    <span class="sr-only">(current)</span>
+
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" [routerLink]="['/nuestrosServicios']">
                                     <i class="fab fa-servicestack"></i> Nuestros servicios</a>
                             </li>
+                            <!--
                             <li class="nav-item">
                                 <a class="nav-link" [routerLink]="['/certificaciones']">
                                     <i class="far fa-address-card"></i> Certificaciones</a>
                             </li>
+                            
+
+                            -->
+
                             <li class="nav-item">
                                 <a class="nav-link" [routerLink]="['/contactenos']">
                                     <i class="fas fa-address-book"></i> Contactenos</a>
@@ -61,7 +73,7 @@
 
 
                     <div class="col-12 col-lg-3  col-md-12  col-xs-12 col-sm-12">
-                        <a class="nav-link" [routerLink]="['/inicio']">
+                        <a class="nav-link" [routerLink]="['/consultar']">
                             <h3>
                                     <span class="badge badge-pill badge-success" style=" color:white">
                                             <i style=" color:white" class="far fa-address-card fa-lg">
@@ -82,7 +94,7 @@
                     </div>
 
                     <div *ngIf="isLogin" class="col col-1  col-lg-1 col-md-1  col-xs-12 col-sm-12 " >
-                        <a class="nav-link" [routerLink]="['/inicio']" (click)="onClickLogout()" >
+                        <a class="nav-link" [routerLink]="['/quienesSomos']" (click)="onClickLogout()" >
                             <span class="align-baseline" style=" color:white">
                                 <i style=" color:white" class="fas fa-outdent"></i>Cerrar sesión</span>
                         </a>

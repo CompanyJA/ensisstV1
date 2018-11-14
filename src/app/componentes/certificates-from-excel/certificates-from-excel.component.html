@@ -6,7 +6,11 @@
 
 <div  *ngIf="isLoaded">
     <h1>Datos Cargados</h1>
-    <hot-table [settings]="settingsObj"[data]="dataset"></hot-table>
+    <hot-table [settings]="settingsObj" [data]="dataset"></hot-table>
+    <br><br>
+    <button (click)="insertData()">Subir a la pagina</button>
+    <br><br>
+    
 
 </div>
 

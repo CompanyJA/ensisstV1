@@ -26,14 +26,14 @@ import {AuthGuard} from './guard/auth.guard';
 
 
 const APP_ROUTES: Routes =[
-  {path: '', redirectTo : 'inicio', pathMatch : 'full'},
-  {path : 'inicio', component : InicioComponent},
+  {path: '', redirectTo : 'quienesSomos', pathMatch : 'full'},
+  {path : 'consultar', component : InicioComponent},
   {path: 'quienesSomos', component:QuienesSomosComponent},
   {path:'login', component:LoginComponent},
   {path: 'nuestrosServicios', component:NuestrosServiciosComponent},
   {path: 'contactenos', component:ContactenosComponent},
   {path: 'admin', component:AdminComponent, canActivate:[AuthGuard]},
-  {path: '**', component:InicioComponent}
+  {path: '**', component:QuienesSomosComponent}
 
 ]
 

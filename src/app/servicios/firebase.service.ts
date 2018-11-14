@@ -50,14 +50,11 @@ export class FirebaseService {
     this.certificatesObservable.subscribe(certificates => {
       if (certificates.length > 0) {
         if (this.firstTime) {
-          console.log('No se puede insertar el certificado de consecutivo ' + certificate.Consecutivo + 
-          ' porque ya existe en la base de datos');
           this.alertService.danger('No se puede insertar el certificado de consecutivo ' + certificate.Consecutivo + 
           ' porque ya existe en la base de datos');
         }
       } else {
         this.certificateCollection = this.firebase.collection(this.collectionName);
-        console.log('El certificado fue ingresado correctamente');
         this.alertService.success('El certificado fue ingresado correctamente');
         this.firstTime = false;
         this.certificateCollection.add(certificate);

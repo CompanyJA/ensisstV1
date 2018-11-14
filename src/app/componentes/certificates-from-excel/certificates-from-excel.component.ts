@@ -26,8 +26,6 @@ export class CertificatesFromExcelComponent implements OnInit {
     colHeaders: ["Consecutivo", "Nombres", "Cedula", "NivelCurso", "Fecha"],
   };
 
-
-
   constructor(
     private spinner: NgxSpinnerService,
     private alertService: AlertService,
